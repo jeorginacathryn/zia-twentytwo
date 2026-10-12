@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffe9f1">
+  <title>For Zia ♡ | Happy 22nd Birthday</title>
+  <style>
+    /* ==================== GLOBAL STYLES ==================== */
+    * { box-sizing: border-box; }
+    :root {
+      --pink: #e96b9b;
+      --pink-dark: #c7477c;
+      --pink-light: #f8c5d8;
+      --blush: #fff0f5;
+      --cream: #fffaf7;
+      --ink: #553543;
+      --muted: #946f7e;
+      --line: #f1d2df;
+      --shadow: 0 18px 55px rgba(173, 75, 116, .13);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--blush);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    button, input { font: inherit; }
+    button, label { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    .hidden { display: none !important; }
+    .screen { min-height: 100vh; }
+    .eyebrow {
+      color: var(--pink-dark);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    h1, h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 600; letter-spacing: -.035em; }
+    .accent { color: var(--pink); font-style: italic; }
+    .primary-button, .music-button, .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 24px;
+      color: white;
+      background: linear-gradient(135deg, #ee83ad, #ce4d85);
+      box-shadow: 0 10px 24px #d75e923d;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .primary-button:hover, .music-button:hover, .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 13px 28px #d75e924d;
+    }
+    button:focus-visible, input:focus-visible, label:focus-within {
+      outline: 3px solid #d875a0;
+      outline-offset: 3px;
+    }
+    .tiny-note { color: var(--muted); font-size: .8rem; line-height: 1.6; }
+
+    /* ==================== SCREEN 1: BIRTHDAY CAKE ==================== */
+    #welcomeScreen {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      padding: 38px 18px 28px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #fff 0%, #fff3f7 48%, #fce1eb 100%);
+    }
+    .welcome-content { position: relative; z-index: 1; width: min(760px, 100%); }
+    .welcome-content h1 {
+      margin: 10px 0 12px;
+      font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+      line-height: 1.08;
+    }
+    .intro { margin: 0; color: var(--muted); line-height: 1.7; }
+    .cake-scene { position: relative; width: min(370px, 90vw); height: 270px; margin: 8px auto 8px; }
+    .cake-plate {
+      position: absolute; bottom: 16px; left: 6%; width: 88%; height: 22px;
+      background: #f5c2d5; border: 5px solid #fff; border-radius: 50%;
+      box-shadow: 0 10px 20px #b9507920;
+    }
+    .cake-bottom {
+      position: absolute; bottom: 34px; left: 15%; width: 70%; height: 82px;
+      border: 4px solid #fff; border-radius: 18px 18px 25px 25px;
+      background: repeating-linear-gradient(90deg, #f5a5c3 0 27px, #f8b8d0 27px 54px);
+      box-shadow: inset 0 -9px #df7da4;
+    }
+    .cake-ribbon { position: absolute; top: 30px; left: 0; width: 100%; height: 14px; background: #fff0f5; box-shadow: 0 4px #e98cb0; }
+    .cake-middle {
+      position: absolute; z-index: 1; bottom: 108px; left: 19%; width: 62%; height: 62px;
+      background: #f8c5d8; border: 4px solid #fff; border-radius: 16px 16px 12px 12px;
+      box-shadow: inset 0 -8px #e98cb0;
+    }
+    .icing-drip { position: absolute; top: -4px; left: -2px; right: -2px; height: 19px; background: #fff8fb; border-radius: 15px 15px 8px 8px; }
+    .icing-drip:after {
+      content: ''; position: absolute; left: 19%; top: 8px; width: 17px; height: 19px;
+      background: #fff8fb; border-radius: 0 0 12px 12px;
+      box-shadow: 65px 2px #fff8fb, 130px -1px #fff8fb;
+    }
+    .cake-top {
+      position: absolute; z-index: 3; bottom: 163px; left: 22%; width: 56%; height: 29px;
+      display: grid; place-items: center; border: 4px solid #fff; border-radius: 50%;
+      background: #ffdfeb; color: #d34f87; font-size: 18px;
+    }
+    .berry { position: absolute; z-index: 4; color: #d44e83; font-size: 17px; }
+    .b1 { left: 25%; top: 29px; } .b2 { left: 48%; top: 26px; } .b3 { right: 24%; top: 29px; }
+    .candle {
+      position: absolute; z-index: 5; bottom: 184px; width: 11px; height: 43px; border-radius: 5px;
+      background: repeating-linear-gradient(135deg, #fff 0 5px, #ed78a6 5px 10px);
+    }
+    .candle-one { left: 37%; } .candle-two { left: 49%; height: 51px; } .candle-three { left: 61%; }
+    .flame {
+      position: absolute; top: -14px; left: 1px; width: 9px; height: 14px;
+      background: #ffbd4a; border-radius: 80% 20% 70% 30%;
+      box-shadow: 0 0 17px #ffc45b; animation: flicker 1s infinite alternate;
+    }
+    .sparkle { position: absolute; color: #e6a6bf; animation: twinkle 2s infinite ease-in-out; }
+    .sparkle-one { left: 7%; top: 75px; font-size: 28px; }
+    .sparkle-two { right: 7%; top: 105px; font-size: 34px; animation-delay: .6s; }
+    .sparkle-three { right: 18%; top: 30px; font-size: 20px; animation-delay: 1s; }
+    .audio-note { min-height: 22px; margin: 4px 0 15px; color: var(--pink-dark); font-size: .88rem; }
+    .welcome-small { margin: 30px 0 0; color: #b78a9b; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+    .floating-hearts { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .floating-hearts span { position: absolute; bottom: -35px; color: #e8a0bc; opacity: .55; animation: float-up linear infinite; }
+    @keyframes flicker { from { transform: rotate(-8deg) scale(.95); } to { transform: rotate(8deg) scale(1.08); } }
+    @keyframes twinkle { 0%, 100% { opacity: .45; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.15); } }
+    @keyframes float-up { to { transform: translateY(-110vh) rotate(25deg); opacity: 0; } }
+
+    /* ==================== SCREEN 2: BIRTHDAY MESSAGE ==================== */
+    #memoryScreen { background: #fff8fb; }
+    .top-nav {
+      min-height: 66px; padding: 12px clamp(18px, 5vw, 70px); display: flex;
+      align-items: center; justify-content: space-between; gap: 12px;
+      border-bottom: 1px solid #f7dce7; background: #fffafc; color: var(--muted); font-size: .8rem;
+    }
+    .nav-brand { color: var(--pink-dark); font: 700 1.15rem Georgia, serif; }
+    .back-button { padding: 9px 15px; background: #fff; color: var(--pink-dark); border: 1px solid var(--line); box-shadow: none; font-size: .78rem; }
+    .memory-hero { position: relative; overflow: hidden; padding: 62px 18px 50px; text-align: center; background: linear-gradient(180deg, #fff0f6, #fff8fb); }
+    .hero-flower { margin-bottom: 8px; color: #e79abb; font-size: 2rem; }
+    .memory-hero h1 { margin: 14px 0; font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 1.04; }
+    .hero-subtitle { color: var(--muted); line-height: 1.7; }
+    .hero-line { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 25px auto 14px; color: var(--pink); }
+    .hero-line:before, .hero-line:after { content: ''; width: 62px; height: 1px; background: #e9b6cb; }
+    .music-status { margin: 10px 0 13px; color: var(--pink-dark); font-size: .85rem; }
+    input[type=file] { max-width: 100%; }
+    .audio-file-input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .song-player-wrap {
+      width: min(390px, 100%); margin: 18px auto 0; padding: 18px;
+      border: 1px solid #f1d2df; border-radius: 22px; background: #fff;
+      box-shadow: 0 12px 32px rgba(173, 75, 116, .12);
+    }
+    .song-player-label {
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      margin-bottom: 14px; color: #b44d7c; font-size: .67rem; letter-spacing: .09em; font-weight: 700;
+    }
+    .album-art-stage {
+      position: relative; width: min(270px, 100%); aspect-ratio: 1 / 1; margin: 0 auto;
+      overflow: hidden; border-radius: 16px; background: #1a1111;
+      box-shadow: 0 12px 26px rgba(40, 17, 27, .22);
+    }
+    .album-cover {
+      position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%;
+      display: block; object-fit: cover;
+    }
+    /* The audio is supplied by YouTube, behind the album art. */
+    #yellowPlayer {
+      position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%;
+      overflow: hidden; opacity: .01; pointer-events: none;
+    }
+    #yellowPlayer iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .album-play-button {
+      position: absolute; z-index: 3; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      display: grid; place-items: center; width: 70px; height: 70px; padding: 0 0 0 4px;
+      border: 2px solid rgba(255,255,255,.9); border-radius: 50%;
+      color: white; background: linear-gradient(135deg, #ee83ad, #c7477c);
+      box-shadow: 0 8px 24px rgba(70, 16, 44, .35); font-size: 1.6rem;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .album-play-button:hover { transform: translate(-50%, -50%) scale(1.07); box-shadow: 0 12px 30px rgba(70, 16, 44, .42); }
+    .album-play-button.is-playing { padding-left: 0; }
+    .album-song-title { margin: 15px 0 3px; color: var(--ink); font: 700 1.05rem Georgia, 'Times New Roman', serif; }
+    .album-song-artist { margin: 0; color: var(--muted); font-size: .83rem; }
+    .song-help { max-width: 560px; margin: 12px auto 0; font-size: .77rem; color: var(--muted); line-height: 1.55; text-align: center; }
+    .youtube-link { display: inline-block; margin-top: 9px; color: #b44d7c; font-size: .78rem; font-weight: 700; text-decoration: none; }
+    .youtube-link:hover { text-decoration: underline; }
+    .section-shell { width: min(850px, calc(100% - 36px)); margin: 0 auto; }
+    .message-section { padding: 8px 0 80px; }
+    .message-card { position: relative; max-width: 850px; margin: 0 auto; padding: clamp(28px, 6vw, 62px); overflow: hidden; border: 1px solid #f5dce6; border-radius: 24px; background: white; box-shadow: var(--shadow); }
+    .message-card:before { content: '♡'; position: absolute; top: 8px; right: 22px; color: #fce0eb; font: 6rem Georgia, serif; transform: rotate(12deg); pointer-events: none; }
+    .message-stamp { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px; padding: 8px 12px; border: 1px solid #f0cada; border-radius: 5px; color: var(--pink-dark); font-size: .62rem; letter-spacing: .15em; font-weight: 700; transform: rotate(-2deg); }
+    .message-stamp span { font-size: 1rem; }
+    .message-card h2 { margin-bottom: 26px; }
+    .letter { color: #6f5260; font-size: .98rem; line-height: 1.95; }
+    .letter p { margin: 0 0 19px; }
+    .letter strong { color: #9d416b; }
+    .signoff { padding-top: 6px; color: var(--pink-dark); font: 1.2rem Georgia, 'Times New Roman', serif; }
+    .letter-footer { margin-top: 24px; padding-top: 20px; border-top: 1px solid #f4dce6; color: #b27b92; font-size: .7rem; text-align: center; text-transform: uppercase; letter-spacing: .14em; }
+    .site-footer { padding: 25px 15px 35px; background: #fff0f6; color: #ad8193; font-size: .8rem; text-align: center; }
+
+    /* ==================== TABLET + MOBILE RESPONSIVE ==================== */
+    @media (max-width: 900px) {
+      .memory-hero { padding-top: 52px; }
+    }
+    @media (max-width: 600px) {
+      .welcome-content h1 { font-size: clamp(2.1rem, 10vw, 3.1rem); }
+      .cake-scene { transform: scale(.92); transform-origin: center; margin: -2px auto -5px; }
+      .top-nav { min-height: 58px; padding: 10px 14px; }
+      .nav-brand { font-size: 1rem; }
+      .back-button { padding: 8px 11px; font-size: .7rem; }
+      .memory-hero { padding: 44px 16px 40px; }
+      .song-player-wrap { padding: 12px; }
+      .album-art-stage { width: min(250px, 100%); }
+      .album-play-button { width: 64px; height: 64px; }
+      .song-player-label { font-size: .61rem; }
+      .hero-subtitle { max-width: 330px; margin-left: auto; margin-right: auto; }
+      .section-shell { width: calc(100% - 28px); }
+      .message-section { padding-bottom: 52px; }
+      .message-card { border-radius: 18px; }
+      .letter { font-size: .93rem; line-height: 1.85; }
+      .message-card:before { right: 12px; font-size: 4rem; }
+    }
+    @media (max-width: 360px) {
+      .primary-button { padding: 12px 18px; }
+      .cake-scene { transform: scale(.84); margin-top: -12px; margin-bottom: -12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== PAGE 1: CAKE SURPRISE ==================== -->
+  <section class="screen" id="welcomeScreen">
+    <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+    <main class="welcome-content">
+      <p class="eyebrow">A little surprise, made with love</p>
+      <h1>Someone special is turning <span class="accent">22!</span></h1>
+      <p class="intro">Make a wish, Zia. This little moment is all for you. ♡</p>
+
+      <div class="cake-scene" role="img" aria-label="A pink birthday cake with three glowing candles">
+        <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div><div class="sparkle sparkle-three">✦</div>
+        <div class="candle candle-one"><i class="flame"></i></div>
+        <div class="candle candle-two"><i class="flame"></i></div>
+        <div class="candle candle-three"><i class="flame"></i></div>
+        <div class="cake-top">♡</div>
+        <div class="cake-middle"><div class="icing-drip"></div><span class="berry b1">♥</span><span class="berry b2">♥</span><span class="berry b3">♥</span></div>
+        <div class="cake-bottom"><div class="cake-ribbon"></div></div>
+        <div class="cake-plate"></div>
+      </div>
+
+      <div class="audio-note" id="birthdayNote" aria-live="polite">♪ Ready for your birthday song?</div>
+      <button class="primary-button" id="birthdayButton" type="button">Play my birthday song ♫</button>
+      <button class="primary-button hidden" id="openButton" type="button">Open me ♡</button>
+      <p class="tiny-note" id="birthdayHelp">Tap to play a little Happy Birthday tune (about 10 seconds).</p>
+      <p class="welcome-small">wrapped in pink, just for you</p>
+    </main>
+  </section>
+
+  <!-- ==================== PAGE 2: BIRTHDAY MESSAGE ==================== -->
+  <section class="screen hidden" id="memoryScreen">
+    <nav class="top-nav">
+      <span class="nav-brand">♡ for Zia</span>
+      <button class="back-button" type="button" id="backButton">← Back to the surprise</button>
+    </nav>
+
+    <header class="memory-hero">
+      <div class="hero-flower">✿</div>
+      <p class="eyebrow">a little birthday letter, made with love</p>
+      <h1>Happy 22nd Birthday<br><span class="accent">My Zia</span></h1>
+      <p class="hero-subtitle">A little song and a message made just for you. ♡</p>
+      <div class="hero-line"><span>♡</span></div>
+      <p class="music-status" id="musicStatus" aria-live="polite">♫ Yellow — Coldplay · ready for your memories</p>
+      <div class="song-player-wrap">
+        <div class="song-player-label"><span>♫ YOUR BIRTHDAY SONG</span><span>ON REPEAT ♡</span></div>
+        <div class="album-art-stage" aria-label="Coldplay Parachutes album cover with music play button">
+          <div id="yellowPlayer" aria-hidden="true"></div>
+          <img
+            class="album-cover"
+            src="https://www.coldplay.com/wp/wp-content/uploads/2015/11/art_parachutes.jpg"
+            alt="Parachutes album cover by Coldplay"
+            referrerpolicy="no-referrer">
+          <button class="album-play-button" id="yellowPlayButton" type="button" aria-label="Play Yellow by Coldplay" aria-pressed="false">▶</button>
+        </div>
+        <p class="album-song-title">Yellow</p>
+        <p class="album-song-artist">Coldplay · Parachutes</p>
+        <p class="song-help" id="songHelp">Press the play button to listen. The song will repeat automatically. ♡</p>
+        <p class="music-status" id="musicStatus" aria-live="polite">♫ Ready to play Yellow</p>
+        <a class="youtube-link" href="https://www.youtube.com/watch?v=yKNxeF4KMsY" target="_blank" rel="noopener noreferrer">Open the official video on YouTube ↗</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="message-section section-shell">
+        <div class="message-card">
+          <div class="message-stamp">FOR YOU, ZIA <span>♡</span></div>
+          <p class="eyebrow">a letter from Joji</p>
+          <h2>To my favorite <span class="accent">person</span></h2>
+          <div class="letter">
+            <p>Helloo Zia this is your daughter, pamangkin, kapatid HAHHAHAHA eme,</p>
+            <p><strong>Dear my mother, first friend, and my best zia,</strong></p>
+            <p>I just wanna first of all thank you for everything, kasi HAHHAHAAH alam ko namang minsan na strestress ka rin sa mga kinukwento ko pero you still listen and give advices. I want to thank you for being here, it really means a lot to me, I hope na you also get to feel na anytime pwede ka mag open up sakin anytime. I want you to know na willing lang ako makinig sa'yo anytime though busy tayo lagi, one chat or one floor away lang ako hehee. Though ang dami mang nangyayari palagi, thank you for everything specially sa pag bili rin minsan ng mga cravings ko and kinemerut.</p>
+            <p>I hope na laging matupad mga wishes and dreams mo in life, mapa money or career man yan, you deserve the best in everything. I hope you know how talented, beautiful, and amazing you are as a zia, daughter, friend and everythinggg. I'm proud of you always in everything you do onting kembot nalang lalaya kana, EMEEE in all things I'm proud of you always, small and big achievements man yan. I will always be here for youu, my wish for you is for your wishes today and everyday to be fulfilled. May you be very happy todayy (kahit ang daming nangyayari sa finals shi-) I hope this message made you smile. I love you so so much always! 🫶</p>
+            <p class="signoff">Love, Joji 😙</p>
+          </div>
+          <div class="letter-footer">always in your corner · today and everyday ♡</div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">Made with lots of love, pink, and a little bit of eme. ♡</footer>
+  </section>
+
+  <script>
+    /* ==================== 10-SECOND HAPPY BIRTHDAY TUNE ====================
+       The first song is synthesized in the browser, so it needs no separate
+       audio file. Click the button to begin (browser audio needs interaction).
+    ======================================================================= */
+    const birthdayButton = document.getElementById('birthdayButton');
+    const openButton = document.getElementById('openButton');
+    const birthdayNote = document.getElementById('birthdayNote');
+    const birthdayHelp = document.getElementById('birthdayHelp');
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const memoryScreen = document.getElementById('memoryScreen');
+    let audioContext = null;
+    let birthdayTimer = null;
+
+    // Notes and beat lengths for a short, recognizable Happy Birthday melody.
+    const birthdayNotes = [
+      ['G4',1], ['G4',1], ['A4',2], ['G4',2], ['C5',2], ['B4',3],
+      ['G4',1], ['G4',1], ['A4',2], ['G4',2], ['D5',2], ['C5',3],
+      ['G4',1], ['G4',1], ['G5',2], ['E5',2], ['C5',2], ['B4',2], ['A4',3],
+      ['F5',1], ['F5',1], ['E5',2], ['C5',2], ['D5',2], ['C5',3]
+    ];
+    const frequencies = {
+      G4: 392.00, A4: 440.00, B4: 493.88, C5: 523.25,
+      D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99
+    };
+
+    function playBirthdayTune() {
+      if (birthdayButton.disabled) return;
+      birthdayButton.disabled = true;
+      birthdayNote.textContent = 'Playing Happy Birthday just for you... ♫';
+      birthdayHelp.textContent = 'Make a wish, Zia! Your “Open me” button will appear when the tune ends.';
+      birthdayButton.classList.add('hidden');
+
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) throw new Error('Web Audio is not supported in this browser.');
+        audioContext = new AudioContextClass();
+        audioContext.resume();
+        const startAt = audioContext.currentTime + 0.12;
+        const beat = 0.22; // 46 beats x 0.22 seconds is about 10 seconds.
+        let cursor = startAt;
+
+        birthdayNotes.forEach(([note, beats]) => {
+          const duration = beats * beat;
+          const oscillator = audioContext.createOscillator();
+          const gain = audioContext.createGain();
+          oscillator.type = 'triangle';
+          oscillator.frequency.value = frequencies[note];
+          gain.gain.setValueAtTime(0.0001, cursor);
+          gain.gain.exponentialRampToValueAtTime(0.13, cursor + 0.025);
+          gain.gain.setValueAtTime(0.13, Math.max(cursor + 0.03, cursor + duration * 0.72));
+          gain.gain.exponentialRampToValueAtTime(0.0001, cursor + duration * 0.94);
+          oscillator.connect(gain);
+          gain.connect(audioContext.destination);
+          oscillator.start(cursor);
+          oscillator.stop(cursor + duration);
+          cursor += duration;
+        });
+
+        const totalMs = Math.max(10000, (cursor - startAt) * 1000);
+        birthdayTimer = setTimeout(() => {
+          openButton.classList.remove('hidden');
+          birthdayNote.textContent = 'Your little surprise is ready ♡';
+          birthdayHelp.textContent = 'Click “Open me” when you are ready for your birthday memories.';
+          birthdayButton.disabled = false;
+          if (audioContext && audioContext.state !== 'closed') audioContext.close();
+        }, totalMs);
+      } catch (error) {
+        birthdayNote.textContent = 'This browser could not play the birthday tune. Please try a recent version of Chrome, Edge, Safari, or Firefox.';
+        birthdayButton.disabled = false;
+        birthdayButton.classList.remove('hidden');
+      }
+    }
+    birthdayButton.addEventListener('click', playBirthdayTune);
+
+    /* Floating hearts on the welcome screen. */
+    const floatingHearts = document.getElementById('floatingHearts');
+    for (let i = 0; i < 18; i++) {
+      const heart = document.createElement('span');
+      heart.textContent = ['♡', '♥', '✧'][i % 3];
+      heart.style.left = (Math.random() * 100) + '%';
+      heart.style.animationDelay = (Math.random() * 9) + 's';
+      heart.style.animationDuration = (8 + Math.random() * 8) + 's';
+      heart.style.fontSize = (12 + Math.random() * 16) + 'px';
+      floatingHearts.appendChild(heart);
+    }
+
+    /* Album-cover music player: the official YouTube video is embedded behind the artwork. */
+    const musicStatus = document.getElementById('musicStatus');
+    const songHelp = document.getElementById('songHelp');
+    const yellowPlayButton = document.getElementById('yellowPlayButton');
+    const yellowVideoId = 'yKNxeF4KMsY';
+    let yellowPlayer = null;
+    let yellowPlayerReady = false;
+    let yellowIsPlaying = false;
+    let yellowPlayRequested = false;
+    let youtubeApiRequested = false;
+
+    function loadYouTubeApi() {
+      if (youtubeApiRequested || window.YT) return;
+      youtubeApiRequested = true;
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      yellowPlayer = new YT.Player('yellowPlayer', {
+        width: '100%',
+        height: '100%',
+        videoId: yellowVideoId,
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          disablekb: 1,
+          loop: 1,
+          playlist: yellowVideoId,
+          playsinline: 1,
+          rel: 0
+        },
+        events: {
+          onReady: function () {
+            yellowPlayerReady = true;
+            musicStatus.textContent = '♫ Ready to play Yellow';
+            if (yellowPlayRequested) playYellow();
+          },
+          onStateChange: function (event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+              yellowIsPlaying = true;
+              yellowPlayButton.textContent = 'Ⅱ';
+              yellowPlayButton.classList.add('is-playing');
+              yellowPlayButton.setAttribute('aria-label', 'Pause Yellow by Coldplay');
+              yellowPlayButton.setAttribute('aria-pressed', 'true');
+              musicStatus.textContent = '♫ Playing Yellow · looping';
+              songHelp.textContent = 'Yellow is playing and will repeat automatically. Tap the button to pause. ♡';
+            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+              // The player is configured to loop. This also restarts playback if a browser emits ENDED.
+              if (event.data === YT.PlayerState.ENDED) {
+                yellowPlayer.playVideo();
+                return;
+              }
+              yellowIsPlaying = false;
+              yellowPlayButton.textContent = '▶';
+              yellowPlayButton.classList.remove('is-playing');
+              yellowPlayButton.setAttribute('aria-label', 'Play Yellow by Coldplay');
+              yellowPlayButton.setAttribute('aria-pressed', 'false');
+              musicStatus.textContent = '♫ Yellow is paused';
+              songHelp.textContent = 'Tap the play button to continue. The song will repeat automatically. ♡';
+            }
+          },
+          onError: function () {
+            musicStatus.textContent = 'The YouTube player could not load.';
+            songHelp.textContent = 'Check your internet connection or use the official YouTube link below.';
+            yellowPlayButton.disabled = false;
+          }
+        }
+      });
+    };
+
+    function playYellow() {
+      if (!yellowPlayerReady || !yellowPlayer) {
+        yellowPlayRequested = true;
+        loadYouTubeApi();
+        musicStatus.textContent = '♫ Loading Yellow...';
+        return;
+      }
+      yellowPlayRequested = false;
+      yellowPlayer.playVideo();
+    }
+
+    yellowPlayButton.addEventListener('click', function () {
+      if (!yellowPlayerReady) {
+        yellowPlayRequested = true;
+        yellowPlayButton.disabled = true;
+        musicStatus.textContent = '♫ Loading Yellow...';
+        loadYouTubeApi();
+        // Re-enable the button after the player becomes ready.
+        const waitForPlayer = window.setInterval(function () {
+          if (yellowPlayerReady) {
+            window.clearInterval(waitForPlayer);
+            yellowPlayButton.disabled = false;
+          }
+        }, 200);
+        return;
+      }
+      if (yellowIsPlaying) {
+        yellowPlayer.pauseVideo();
+      } else {
+        playYellow();
+      }
+    });
+
+    openButton.addEventListener('click', () => {
+      welcomeScreen.classList.add('hidden');
+      memoryScreen.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Load the music player, but wait for Zia to press the album's play button.
+      loadYouTubeApi();
+    });
+
+    document.getElementById('backButton').addEventListener('click', () => {
+      memoryScreen.classList.add('hidden');
+      welcomeScreen.classList.remove('hidden');
+      if (yellowPlayerReady && yellowPlayer) yellowPlayer.stopVideo();
+      yellowIsPlaying = false;
+      yellowPlayRequested = false;
+      yellowPlayButton.textContent = '▶';
+      yellowPlayButton.classList.remove('is-playing');
+      yellowPlayButton.setAttribute('aria-label', 'Play Yellow by Coldplay');
+      yellowPlayButton.setAttribute('aria-pressed', 'false');
+      musicStatus.textContent = '♫ Ready to play Yellow';
+      songHelp.textContent = 'Press the play button to listen. The song will repeat automatically. ♡';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* The album art is hosted on Coldplay's official website; music streams through YouTube. */
+  </script>
+</body>
+</html>
